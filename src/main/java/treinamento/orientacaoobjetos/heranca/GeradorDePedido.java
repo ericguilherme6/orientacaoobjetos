@@ -5,23 +5,22 @@ import java.util.List;
 
 public class GeradorDePedido {
 
-    public List<Pedido> gerar() throws QuantidadePedidoInvalidaExeception {
+    public void gerar() throws QuantidadePedidoInvalidaExeception {
 
-        List<Pedido> pedidos = criarPedidos();
+        List<PedidoCompra> pedidos = Arrays.asList(criarPedidoCompra(), criarPedidoBonificado());
 
-        for(Pedido pedido : pedidos){
+        for (PedidoCompra pedido : pedidos){
             pedido.validaQuantidade();
             pedido.lancarQuantidadeNoEstoque();
         }
-
-        return pedidos;
     }
 
-    private List<Pedido> criarPedidos() {
-        Pedido pedidoCompra = new Pedido(100);
-        PedidoBonificado pedidoBonificado = new PedidoBonificado(50);
+    private PedidoCompra criarPedidoCompra() {
+        return new PedidoCompra(100);
+    }
 
-        return Arrays.asList(pedidoCompra, pedidoBonificado);
+    private PedidoBonificado criarPedidoBonificado() {
+        return new PedidoBonificado(100);
     }
 
 }

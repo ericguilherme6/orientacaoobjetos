@@ -1,6 +1,6 @@
 package treinamento.orientacaoobjetos.heranca;
 
-public class PedidoBonificado extends Pedido {
+public class PedidoBonificado extends PedidoCompra {
 
     public PedidoBonificado(int quantidade) {
         super(quantidade);

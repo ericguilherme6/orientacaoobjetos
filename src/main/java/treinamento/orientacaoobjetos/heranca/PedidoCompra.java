@@ -1,11 +1,11 @@
 package treinamento.orientacaoobjetos.heranca;
 
-public class Pedido {
+public class PedidoCompra {
 
     protected int quantidade;
     protected Estoque estoque;
 
-    public Pedido(int quantidade) {
+    public PedidoCompra(int quantidade) {
         this.quantidade = quantidade;
     }
 
