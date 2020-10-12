@@ -3,6 +3,11 @@ package treinamento.orientacaoobjetos.coesao;
 import java.math.BigDecimal;
 import java.util.Calendar;
 
+import treinamento.orientacaoobjetos.coesao.calculadores.CalculadorEntradaProduto;
+import treinamento.orientacaoobjetos.coesao.calculadores.CalculadorSaidaProduto;
+
+import static treinamento.orientacaoobjetos.coesao.TipoMovimentoEstoque.ENTRADA_PRODUTO;
+
 public class MovimentoEstoque {
 
     private int id;
@@ -76,5 +81,17 @@ public class MovimentoEstoque {
 
     public void setIcmsValor(BigDecimal icmsValor) {
         this.icmsValor = icmsValor;
+    }
+
+    public BigDecimal calculaValor() {
+        if(ENTRADA_PRODUTO.equals(getTipoMovimento())) {
+            return CalculadorEntradaProduto.calculaValorMovimentoEntradaProduto(this);
+        }
+
+        if(TipoMovimentoEstoque.SAIDA_PRODUTO.equals(getTipoMovimento())) {
+            return CalculadorSaidaProduto.calculaValorMovimentoSaidaProduto(this);
+        }
+
+        throw new RuntimeException("Movimento inválido");
     }
 }
